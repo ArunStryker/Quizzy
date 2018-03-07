@@ -20,10 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     Button answer1, answer2, answer3, answer4;
-
     protected TextView score;
     protected TextView question;
-
     private Questions mQuestions = new Questions();
 
     public String[] mAnswer;
@@ -88,21 +86,17 @@ public class MainActivity extends AppCompatActivity {
 
         // Start the execution
         score.setText(scoreText.concat(Integer.toString(mScore)));
-
         updateQuestion(count, noRepeatQues, noRepChoice, corAns);
 
-        findViewById(R.id.answer1).setOnClickListener(new View.OnClickListener() {
+        answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (answer1.getText() == mAnswer[count]) {
                     mScore++;
                     count++;
                     score.setText(scoreText.concat(Integer.toString(mScore)));
-
                     if (count==mQuestionsLength) gameOver();
                     else updateQuestion(count, noRepeatQues, noRepChoice, corAns);
-
-                    //updateQuestion(r.nextInt(qBound));
                 }
                 else {
                     count++;
@@ -120,12 +114,10 @@ public class MainActivity extends AppCompatActivity {
                     mScore++;
                     count++;
                     score.setText(scoreText.concat(Integer.toString(mScore)));
-                    //updateQuestion(r.nextInt(qBound));
-
                     if (count==mQuestionsLength) gameOver();
                     else updateQuestion(count, noRepeatQues, noRepChoice, corAns);
-
-                } else {
+                }
+                else {
                     count++;
                     score.setText(scoreText.concat(Integer.toString(mScore)));
                     if (count==mQuestionsLength) gameOver();
@@ -141,12 +133,10 @@ public class MainActivity extends AppCompatActivity {
                     mScore++;
                     count++;
                     score.setText(scoreText.concat(Integer.toString(mScore)));
-                    //updateQuestion(r.nextInt(qBound));
-
                     if (count==mQuestionsLength) gameOver();
                     else updateQuestion(count, noRepeatQues, noRepChoice, corAns);
-
-                } else {
+                }
+                else {
                     count++;
                     score.setText(scoreText.concat(Integer.toString(mScore)));
                     if (count==mQuestionsLength) gameOver();
@@ -162,12 +152,10 @@ public class MainActivity extends AppCompatActivity {
                     mScore++;
                     count++;
                     score.setText(scoreText.concat(Integer.toString(mScore)));
-                    //updateQuestion(r.nextInt(qBound));
-
                     if (count==mQuestionsLength) gameOver();
                     else updateQuestion(count, noRepeatQues, noRepChoice, corAns);
-
-                } else {
+                }
+                else {
                     count++;
                     score.setText(scoreText.concat(Integer.toString(mScore)));
                     if (count==mQuestionsLength) gameOver();
@@ -178,26 +166,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateQuestion(int num, ArrayList<String> noRepeatQues, ArrayList<ArrayList<String>> noRepChoice, ArrayList<String> corAns){
-        /*
-        question.setText(mQuestions.getQuestion(num));
-        answer1.setText(mQuestions.getChoice1(num));
-        answer2.setText(mQuestions.getChoice2(num));
-        answer3.setText(mQuestions.getChoice3(num));
-        answer4.setText(mQuestions.getChoice4(num));
-
-        mAnswer = mQuestions.getCorrectAnswer(num);
-        */
 
         question.setText(noRepeatQues.get(num));
-
         answer1.setText(noRepChoice.get(num).get(0));
         answer2.setText(noRepChoice.get(num).get(1));
         answer3.setText(noRepChoice.get(num).get(2));
         answer4.setText(noRepChoice.get(num).get(3));
 
-
         mAnswer = corAns.toArray(new String[corAns.size()]);
-        //mAnswer = corAns.get(num);
 
         //Log
         for (int i = 0; i < mQuestionsLength; i++)
@@ -230,5 +206,4 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
-
 }
